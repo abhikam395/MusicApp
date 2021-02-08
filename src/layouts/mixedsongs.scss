@@ -37,14 +37,17 @@
     &__item{
         margin-right: 30px;
         border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        color: white;
 
         &--size{
-            height: 230px;
-            min-width: 230px;
+            height: auto;
+            width: auto;
         }
 
         &--theme{
-            background-color: white;
+            // background-color: white;
         }
     }
 
@@ -55,11 +58,13 @@
     &__previous-icon{
         position: absolute;
         left: -20px;
+        top: 100px;
     }
 
     &__next-icon{
         position: absolute;
         right: -20px;
+        top: 100px;
     }
 
     &__icon{
@@ -118,6 +123,17 @@
             height: 230px;
             width: 230px;
         }
+    }
+
+    &__song-name{
+        margin-top: 10px;
+        color: grey;
+    }
+
+    &__artist-name{
+        margin-top: 3px;
+        color: grey;
+        font-weight: 500;
     }
 }
 

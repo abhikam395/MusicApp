@@ -10,41 +10,89 @@ export default class MixedSongsLayoutHome extends Component {
         super();
         this.state = {
             songs : [
-                {id: 1, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 2, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 3, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 4, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 5, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 6, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
-                {id: 7, title: 'Be Like That', artists: [{id: 1, name: 'Kane Brown'}], image: songImage },
+                {id: 1, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 2, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 3, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 4, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 5, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 6, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 7, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 8, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 9, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 10, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 11, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 12, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 13, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+                {id: 14, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
             ]
         },
         this.nextIcon = React.createRef();
         this.previousIcon = React.createRef();
         this.list = React.createRef();
+        this.imageHolder = React.createRef();
         this.onPreviousButtonClick = this.onPreviousButtonClick.bind(this);
         this.onNextButtonClick = this.onNextButtonClick.bind(this);
-        this.onMouseEnterImageHolder = this.onMouseEnterImageHolder.bind(this);
-        this.onMouseLeaveImageHolder = this.onMouseLeaveImageHolder.bind(this);
+    }
+
+    getArtistsName(artists){
+        return artists.join(", ");
     }
 
     onPreviousButtonClick(){
-        console.log('onPreviousButtonClick')
+        //songs list
+        let list = this.list.current;
+        //width of imageHolderElement
+        let imageHolderSize = this.imageHolder.current.clientWidth;
+        //add margin to imageHolderSize
+        let sumSize = imageHolderSize + 30;
+        //scroll backward
+        list.scrollBy({left: -sumSize, behavior: 'smooth'});
+        console.log(list)
     }
 
     onNextButtonClick(){
+        //songs list
         let list = this.list.current;
+        //width of imageHolderElement
+        let imageHolderSize = this.imageHolder.current.clientWidth;
+        //add margin to imageHolderSize
+        let sumSize = imageHolderSize + 30;
+        //scroll forword
+        list.scrollBy({left: sumSize, behavior: 'smooth'});
+        console.log(list)
     }
 
-    onMouseEnterImageHolder(index){
+    hidePreviousButton(){
+        let icon = this.previousIcon.current;
+        icon.style.display = "none"
+    }
+
+    showPreviousButton(){
+        let icon = this.previousIcon.current;
+        icon.style.display = "flex"
+    }
+
+    hideNextButton(){
+        let icon = this.nextIcon.current;
+        icon.style.display = "none"
+    }
+
+    showNextButton(){
+        let icon = this.nextIcon.current;
+        icon.style.display = "flex"
+    }
+
+
+    showMoreAndPlaySongIcon(index){
         let moreIcon = document.getElementsByClassName('mixedsong__more-icon')[index];
         let playSong = document.getElementsByClassName('mixedsong__play-icon')[index];
       
         moreIcon.style.display = 'block';
         playSong.style.display = 'flex';
     }
+    
 
-    onMouseLeaveImageHolder(index){
+    hideMoreAndPlaySongIcon(index){
         let moreIcon = document.getElementsByClassName('mixedsong__more-icon')[index];
         let playSong = document.getElementsByClassName('mixedsong__play-icon')[index];
 
@@ -57,9 +105,10 @@ export default class MixedSongsLayoutHome extends Component {
             <li
                 key={song.id}
                 className="mixedsong__item mixedsong__item--size mixedsong__item--theme">
-                <div className="mixedsong__imageholder mixedsong__imageholder--size" 
-                    onMouseEnter={this.onMouseEnterImageHolder.bind(this, index)}
-                    onMouseLeave={this.onMouseLeaveImageHolder.bind(this, index)}>
+                <div className="mixedsong__imageholder mixedsong__imageholder--size"
+                    ref={this.imageHolder}
+                    onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
+                    onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
                     <div className="mixedsong__more-icon">
                         <MoreVert/>
                     </div>
@@ -70,6 +119,12 @@ export default class MixedSongsLayoutHome extends Component {
                         <PlayArrow/>
                     </div>
                 </div>
+                <h4 className="mixedsong__song-name">
+                    {song.title}
+                </h4>
+                <p className="mixedsong__artist-name">
+                    {this.getArtistsName(song.artists)}
+                </p>
             </li>
         )
     }
