@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import './navbarleft.scss';
 
-import youtubeIcon from './../../assets/images/youtubemusic.png';
+import youtubeIcon from './../../../assets/images/youtubemusic.png';
 
 export default class NavbarLeftComponent extends Component {
 

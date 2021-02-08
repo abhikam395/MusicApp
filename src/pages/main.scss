@@ -1,12 +1,11 @@
-.navbar{
+.main{
     display: flex;
-    align-items: center;
-    color: white;
-    padding: 0px 30px;
+    flex-direction: column;
 
     &--size{
-        height: 65px;
         width: 100%;
+        min-height: 100vh;
+        height: auto;
     }
 
     &--theme{
