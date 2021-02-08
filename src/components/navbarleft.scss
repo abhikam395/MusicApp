@@ -1,0 +1,23 @@
+.navbar{
+
+    &__left{
+        display: flex;
+        align-items: center;
+
+        &--size{
+
+        }
+    }
+
+    &__icon{
+
+        &--size{
+            height: 35px;
+            width: 35px;
+        }
+    }
+
+    &__app-name{
+        margin-left: 10px;
+    }
+}

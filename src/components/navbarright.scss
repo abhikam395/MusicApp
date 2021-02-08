@@ -1,0 +1,22 @@
+.navbar{
+
+    &__right{
+
+        &--size{
+
+        }
+    }
+
+    &__profile{
+        cursor: pointer;
+
+        &--size{
+            height: 35px;
+            width: 35px;
+        }
+
+        &-link{
+            color: white;
+        }
+    }
+}

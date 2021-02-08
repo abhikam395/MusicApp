@@ -19,7 +19,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -41,16 +41,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
+        test: /\.jsx?/i,
+        exclude: /node_modules/i,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }],
-              '@babel/preset-react'
-            ],
-            plugins: ['@babel/plugin-transform-runtime']
+            presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }
       },

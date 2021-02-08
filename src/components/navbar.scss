@@ -1,0 +1,15 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 0px 30px;
+
+    &--size{
+        height: 65px;
+        width: 100%;
+    }
+
+    &--theme{
+        background-color: black;
+    }
+}
