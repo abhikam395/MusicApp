@@ -7,6 +7,7 @@
     padding: 0px 30px;
     position: sticky;
     top: 0px;
+    z-index: 100;
 
     &--size{
         height: $navbar-height;

@@ -8,6 +8,9 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'bundle.js'
   },
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin({

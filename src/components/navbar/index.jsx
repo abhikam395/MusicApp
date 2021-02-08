@@ -26,9 +26,7 @@ export default class NavBarComponent extends Component {
                     <NavbarCenterComponent/>
                     <NavbarRightComponent/>
                 </nav>
-                <div className="navbar__divider">
-
-                </div>
+                <div className="navbar__divider"></div>
             </Fragment>
         )
     }

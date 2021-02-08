@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './navbarcenter.scss';
 
+import { Link } from 'react-router-dom';
 import { Search } from '@material-ui/icons';
  
 export default class NavbarCenterComponent extends Component {
@@ -35,15 +36,21 @@ export default class NavbarCenterComponent extends Component {
         context.style.color = 'white';
     }
 
+    getLinkPath(name){
+        if(name == 'Home')
+            return '/';
+        return name.toLowerCase();    
+    }
+
     renderMenuItem(item, index){
         return (
             <li className="navbar__menuitem navbar__menuitem--size" 
                 key={index}
                 onClick={this.onClick}>
-                <a href={`/#${item}`}>
+                <Link to={this.getLinkPath(item)}>
                     {index == 3 ? <Search/> : ""}
                     {item}
-                </a>
+                </Link>
             </li>
         )
     }
