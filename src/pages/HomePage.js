@@ -1,9 +1,9 @@
 import React, { Component, Suspense} from 'react';
 import './home.scss';
 
-const MixedSongsLayoutHome  = React.lazy(() => import('../layouts/MixedSongsLayoutHome'));
-const YourFavouriteLayoutHome = React.lazy(() => import('../layouts/YourFavouriteLayoutHome'));
-const LivePerformanceLayoutHome = React.lazy(() => import('./../layouts/LivePerformanceLayoutHome'));
+const MixedSongsHomeLayout  = React.lazy(() => import('../layouts/MixedSongsHomeLayout'));
+const YourFavouriteHomeLayout = React.lazy(() => import('../layouts/YourFavouriteHomeLayout'));
+const LivePerformanceHomeLayout = React.lazy(() => import('./../layouts/LivePerformanceHomeLayout'));
 
 export default class HomePage extends Component {
 
@@ -11,9 +11,9 @@ export default class HomePage extends Component {
         return (
             <main className="homepage homepage--size">
                 <Suspense fallback={<h4>Loading..</h4>}>
-                    <MixedSongsLayoutHome/>
-                    <YourFavouriteLayoutHome/>
-                    <LivePerformanceLayoutHome/>
+                    <MixedSongsHomeLayout/>
+                    <YourFavouriteHomeLayout/>
+                    <LivePerformanceHomeLayout/>
                 </Suspense>
             </main>
         )

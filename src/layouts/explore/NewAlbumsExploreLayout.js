@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './liveperformance.scss';
-import songImage from './../../assets/images/song-image.jpg';
+import './newalbumsexplore.scss';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
+import songImage from './../../../assets/images/song-image.jpg'
 
-export default class LivePerformanceLayoutHome extends Component {
+export default class NewnewAlbumsHomeLayout extends Component {
 
     constructor(){
         super();
@@ -84,8 +84,8 @@ export default class LivePerformanceLayoutHome extends Component {
 
 
     showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('liveperformance__more-icon')[index];
-        let playSong = document.getElementsByClassName('liveperformance__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
+        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
       
         moreIcon.style.display = 'block';
         playSong.style.display = 'flex';
@@ -93,8 +93,8 @@ export default class LivePerformanceLayoutHome extends Component {
     
 
     hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('liveperformance__more-icon')[index];
-        let playSong = document.getElementsByClassName('liveperformance__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
+        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
 
         moreIcon.style.display = 'none';
         playSong.style.display = 'none';
@@ -104,25 +104,25 @@ export default class LivePerformanceLayoutHome extends Component {
         return (
             <li
                 key={song.id}
-                className="liveperformance__item liveperformance__item--size liveperformance__item--theme">
-                <div className="liveperformance__imageholder liveperformance__imageholder--size"
+                className="newalbums__item newalbums__item--size newalbums__item--theme">
+                <div className="newalbums__imageholder newalbums__imageholder--size"
                     ref={this.imageHolder}
                     onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
                     onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
-                    <div className="liveperformance__more-icon">
+                    <div className="newalbums__more-icon">
                         <MoreVert/>
                     </div>
                     <img src={song.image} 
-                         className="liveperformance__image liveperformance__image--size"/>
+                         className="newalbums__image newalbums__image--size"/>
                     <div 
-                        className="liveperformance__play-icon liveperformance__play-icon--size">
+                        className="newalbums__play-icon newalbums__play-icon--size">
                         <PlayArrow/>
                     </div>
                 </div>
-                <h4 className="liveperformance__song-name">
+                <h4 className="newalbums__song-name">
                     {song.title}
                 </h4>
-                <p className="liveperformance__artist-name">
+                <p className="newalbums__artist-name">
                     {this.getArtistsName(song.artists)}
                 </p>
             </li>
@@ -137,25 +137,28 @@ export default class LivePerformanceLayoutHome extends Component {
         let { songs } = this.state;
 
         return (
-            <section className="liveperformance liveperformance--size">
+            <section className="newalbums newalbums--size">
                 <div className="center">
-                    <div className="liveperformance__content liveperformance__content--size">
-                        <h2 className="liveperformance__title">Mixed for you</h2>
+                    <div className="newalbums__content newalbums__content--size">
+                        <div>
+                            <a href="#albums" className="newalbums__title">New albums and singles</a>
+                            <a href="#albums" className="newalbums__see-all">SEE ALL</a>
+                        </div>
                         <div className="row">
                             <div 
-                                className="liveperformance__icon liveperformance__previous-icon" 
-                                id="liveperformance-previous"
+                                className="newalbums__icon newalbums__previous-icon" 
+                                id="newalbums-previous"
                                 ref={this.previousIcon}
                                 onClick={this.onPreviousButtonClick}>
                                 <NavigateBefore />
                             </div>
                             
-                            <ul className="liveperformance__list liveperformance__list--size"
+                            <ul className="newalbums__list newalbums__list--size"
                                 ref={this.list}>
                                 { this.renderSongList(songs) }
                             </ul>
-                            <div className="liveperformance__icon liveperformance__next-icon" 
-                                id="liveperformance-next"
+                            <div className="newalbums__icon newalbums__next-icon" 
+                                id="newalbums-next"
                                 ref={this.nextIcon}
                                 onClick={this.onNextButtonClick}>
                                 <NavigateNext />

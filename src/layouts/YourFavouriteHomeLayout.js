@@ -6,7 +6,7 @@ import drakeImage from './../../assets/images/drake.jpg';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 
-export default class YourFavouriteLayoutHome extends Component {
+export default class YourFavouriteHomeLayout extends Component {
 
     constructor(){
         super();

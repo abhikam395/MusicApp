@@ -4,7 +4,7 @@ import songImage from './../../assets/images/song-image.jpg';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 
-export default class MixedSongsLayoutHome extends Component {
+export default class MixedSongsHomeLayout extends Component {
 
     constructor(){
         super();

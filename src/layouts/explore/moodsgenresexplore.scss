@@ -1,6 +1,6 @@
-@import './../../assets/scss/common.scss';
+@import './../../../assets/scss/common.scss';
 
-.yourfavourite{
+.moodsgenres{
     color: white;
 
     &--size{
@@ -12,50 +12,52 @@
         display: flex;
         flex-direction: column;
         padding: 50px 0;
-
-        &--size{
-
-        }
     }
 
     &__title{
-        font-size: 38px;
-        font-weight: bold;
+        font-size: 40px;
+        font-weight: 700;
+        color: inherit;
+        text-decoration: none;
+        letter-spacing: -0.45px;
+        line-height: 54px;
+
+        &:hover{
+            text-decoration: underline;
+        }
     }
 
     &__list{
-        display: flex;
+        --columns: '';
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 20px;
+        column-gap: 40px;
         list-style: none;
         overflow: hidden;
 
         &--size{
             width: 100%;
         }
-
     }
 
     &__item{
+        border-radius: 3px;
         display: flex;
-        flex-direction: column;
         align-items: center;
         color: white;
+        cursor: pointer;
+
+        &:hover{
+            background-color: #212121;
+        }
 
         &--size{
-            height: auto;
-            width: auto;
+            height: 50px;
+            min-width: 220px;
+            background-color: #292929;
         }
-
-        &--theme{
-            // background-color: white;
-        }
-
-        &:not(:last-child){
-            margin-right: 30px;
-        }
-    }
-
-    &__next-icon{
-
     }
 
     &__previous-icon{
@@ -84,8 +86,6 @@
     }
 
     &__image{
-        position: relative;
-        border-radius: 115px;
 
         &--size{
             height: 100%;
@@ -122,27 +122,42 @@
     &__imageholder{
         position: relative;
         cursor: pointer;
-        border-radius: 115px;
-        background-color: rebeccapurple;
 
         &--size{
-            height: 230px;
-            width: 230px;
+            // height: 230px;
+            // width: 230px;    
         }
     }
 
-    &__artist-subscribers{
+    &__artist-name{
         margin-top: 3px;
+        color: grey;
+        font-weight: 500;
     }
 
-    &__artist-name{
-        margin-top: 10px;
-        font-weight: 500;
+    &__see-all{
+        margin-left: 30px;
+        font-size: 14px;
+        color: gray;
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    &__name{
+        padding-left: 15px;
+    }
+
+    &__color{
+        width: 7px;
+        height: 100%;
+        border-radius: 3px 0 0 3px;
+        background-color: rebeccapurple;
     }
 }
 
 .row{
     position: relative;
-    margin: 50px 0;
+    margin: 30px 0;
     align-items: center;
 }

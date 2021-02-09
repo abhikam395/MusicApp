@@ -1,0 +1,53 @@
+.categories{
+    margin: 50px 0;
+
+    &--size{
+        min-height: auto;
+        width: 100%;
+    }
+
+    &__list{
+        display: flex;
+        list-style: none;
+
+        &--size{
+            width: 100%;
+        }
+    }
+
+    &__item{
+        flex: 1;
+        margin-right: 40px;
+        padding: 18px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &--size{
+            
+        }
+
+        &--theme{
+            background-color: #292929
+        }
+
+        &:first-child{
+            background-color: #212121;
+        }
+
+        &:hover{
+            background-color: #212121;
+        }
+
+        &-icon{
+            color: gray;
+        }
+
+        &-name{
+            margin-left: 10px;
+            font-weight: 900;
+            font-size: 18px;
+        }
+    }
+}
