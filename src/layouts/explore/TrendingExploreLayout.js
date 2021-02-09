@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import './trendingexplore.scss';
 
-import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
+import { 
+    NavigateNext, 
+    NavigateBefore, 
+    PlayArrow, 
+    MoreVert, 
+    ThumbDownOutlined, 
+    ThumbUpOutlined 
+}  from '@material-ui/icons';
 import songImage from './../../../assets/images/song-image.jpg'
 
 export default class NewtrendingHomeLayout extends Component {
@@ -112,13 +119,18 @@ export default class NewtrendingHomeLayout extends Component {
                 </div>
                 <span className="trending__rank">{song.id}</span>
                 <div className="trending__song-info">
-                    <h4 class="trending__song-name">{song.title}</h4>
+                    <h4 classNma="trending__song-name">{song.title}</h4>
                     <p>{song.artist[0]} 
                         <div className="trending__point"></div>
                         <span className="trending__views">{song.views}</span>
                         views
                     </p>
                 </div>  
+                <div className="trending__icons">
+                    <ThumbDownOutlined className="trending__dislike-icon"/>
+                    <ThumbUpOutlined className="trending__like-icon"/>
+                    <MoreVert className="trending__more-icon"/>
+                </div>
             </li>
         )
     }

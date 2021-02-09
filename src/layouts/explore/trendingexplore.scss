@@ -42,6 +42,7 @@
     }
 
     &__item{
+        position: relative;
         margin-right: 30px;
         border-radius: 2px;
         display: flex;
@@ -93,6 +94,29 @@
         left: 0;
         right: 0;
         margin: auto;
+        display: none;
+    }
+
+    &__icons{
+        position: absolute;
+        right: 0;
+        display: none;
+        align-items: center;
+        width: auto;
+        padding: 10px 20px;
+        background-color: black;
+    }
+
+    &__like-icon{
+        margin-right: 20px;
+    }
+
+    &__dislike-icon{
+        margin-right: 20px;
+    }
+
+    &__more-icon{
+
     }
 
     &__previous-icon{
@@ -137,13 +161,6 @@
             width: 40px;
         }
 
-    }
-
-    &__more-icon{
-        display: none;
-        position: absolute;
-        right: 10px;
-        top: 10px;
     }
 
     &__imageholder{
