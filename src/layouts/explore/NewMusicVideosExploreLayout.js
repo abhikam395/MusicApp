@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './newalbumsexplore.scss';
+import './newmusicvideosexplore.scss';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 import songImage from './../../../assets/images/song-image.jpg'
 
-export default class NewAlbumsHomeLayout extends Component {
+export default class NewMusicVideosExploreLayout extends Component {
 
     constructor(){
         super();
@@ -84,8 +84,8 @@ export default class NewAlbumsHomeLayout extends Component {
 
 
     showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
-        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('newmusicvideo__more-icon')[index];
+        let playSong = document.getElementsByClassName('newmusicvideo__play-icon')[index];
       
         moreIcon.style.display = 'block';
         playSong.style.display = 'flex';
@@ -93,8 +93,8 @@ export default class NewAlbumsHomeLayout extends Component {
     
 
     hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
-        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('newmusicvideo__more-icon')[index];
+        let playSong = document.getElementsByClassName('newmusicvideo__play-icon')[index];
 
         moreIcon.style.display = 'none';
         playSong.style.display = 'none';
@@ -104,25 +104,25 @@ export default class NewAlbumsHomeLayout extends Component {
         return (
             <li
                 key={song.id}
-                className="newalbums__item newalbums__item--size newalbums__item--theme">
-                <div className="newalbums__imageholder newalbums__imageholder--size"
+                className="newmusicvideo__item newmusicvideo__item--size newmusicvideo__item--theme">
+                <div className="newmusicvideo__imageholder newmusicvideo__imageholder--size"
                     ref={this.imageHolder}
                     onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
                     onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
-                    <div className="newalbums__more-icon">
+                    <div className="newmusicvideo__more-icon">
                         <MoreVert/>
                     </div>
                     <img src={song.image} 
-                         className="newalbums__image newalbums__image--size"/>
+                         className="newmusicvideo__image newmusicvideo__image--size"/>
                     <div 
-                        className="newalbums__play-icon newalbums__play-icon--size">
+                        className="newmusicvideo__play-icon newmusicvideo__play-icon--size">
                         <PlayArrow/>
                     </div>
                 </div>
-                <h4 className="newalbums__song-name">
+                <h4 className="newmusicvideo__song-name">
                     {song.title}
                 </h4>
-                <p className="newalbums__artist-name">
+                <p className="newmusicvideo__artist-name">
                     {this.getArtistsName(song.artists)}
                 </p>
             </li>
@@ -137,28 +137,28 @@ export default class NewAlbumsHomeLayout extends Component {
         let { songs } = this.state;
 
         return (
-            <section className="newalbums newalbums--size">
+            <section className="newmusicvideo newmusicvideo--size">
                 <div className="center">
-                    <div className="newalbums__content newalbums__content--size">
+                    <div className="newmusicvideo__content newmusicvideo__content--size">
                         <div>
-                            <a href="#albums" className="newalbums__title">New albums and singles</a>
-                            <a href="#albums" className="newalbums__see-all">SEE ALL</a>
+                            <a href="#albums" className="newmusicvideo__title">New albums and singles</a>
+                            <a href="#albums" className="newmusicvideo__see-all">SEE ALL</a>
                         </div>
                         <div className="row">
                             <div 
-                                className="newalbums__icon newalbums__previous-icon" 
-                                id="newalbums-previous"
+                                className="newmusicvideo__icon newmusicvideo__previous-icon" 
+                                id="newmusicvideo-previous"
                                 ref={this.previousIcon}
                                 onClick={this.onPreviousButtonClick}>
                                 <NavigateBefore />
                             </div>
                             
-                            <ul className="newalbums__list newalbums__list--size"
+                            <ul className="newmusicvideo__list newmusicvideo__list--size"
                                 ref={this.list}>
                                 { this.renderSongList(songs) }
                             </ul>
-                            <div className="newalbums__icon newalbums__next-icon" 
-                                id="newalbums-next"
+                            <div className="newmusicvideo__icon newmusicvideo__next-icon" 
+                                id="newmusicvideo-next"
                                 ref={this.nextIcon}
                                 onClick={this.onNextButtonClick}>
                                 <NavigateNext />

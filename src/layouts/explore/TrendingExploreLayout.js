@@ -36,7 +36,7 @@ export default class NewtrendingHomeLayout extends Component {
         this.nextIcon = React.createRef();
         this.previousIcon = React.createRef();
         this.list = React.createRef();
-        this.imageHolder = React.createRef();
+        this.listItem = React.createRef();
         this.onPreviousButtonClick = this.onPreviousButtonClick.bind(this);
         this.onNextButtonClick = this.onNextButtonClick.bind(this);
     }
@@ -45,71 +45,52 @@ export default class NewtrendingHomeLayout extends Component {
         return artists.join(", ");
     }
 
+    onMouseEnter(index){
+        let icons = document.getElementsByClassName('trending__icons')[index];
+        let playIcon = document.getElementsByClassName('trending__play-button')[index];
+        let image = document.getElementsByClassName('trending__image')[index];
+        image.style.opacity = '.3';
+        playIcon.style.opacity = '1'
+        icons.style.display = 'flex';
+    }
+
+    onMouseLeave(index){
+        let icons = document.getElementsByClassName('trending__icons')[index];
+        let playIcon = document.getElementsByClassName('trending__play-button')[index];
+        let image = document.getElementsByClassName('trending__image')[index];
+        image.style.opacity = '1';
+        playIcon.style.opacity = '0';
+        icons.style.display = 'none';
+    }
+
     onPreviousButtonClick(){
         //songs list
         let list = this.list.current;
-        //width of imageHolderElement
-        let imageHolderSize = this.imageHolder.current.clientWidth;
-        //add margin to imageHolderSize
-        let sumSize = imageHolderSize + 30;
+        //width of listItemElement
+        let listItemSize = this.listItem.current.clientWidth;
+        //add margin to listItemSize
+        let sumSize = listItemSize + 30;
         //scroll backward
         list.scrollBy({left: -sumSize, behavior: 'smooth'});
-        console.log(list)
     }
 
     onNextButtonClick(){
         //songs list
         let list = this.list.current;
-        //width of imageHolderElement
-        let imageHolderSize = this.imageHolder.current.clientWidth;
-        //add margin to imageHolderSize
-        let sumSize = imageHolderSize + 30;
+        //width of listItemElement
+        let listItemSize = this.listItem.current.clientWidth;
+        //add margin to listItemSize
+        let sumSize = listItemSize + 30;
         //scroll forword
         list.scrollBy({left: sumSize, behavior: 'smooth'});
-        console.log(list)
-    }
-
-    hidePreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "none"
-    }
-
-    showPreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "flex"
-    }
-
-    hideNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "none"
-    }
-
-    showNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "flex"
-    }
-
-
-    showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('trending__more-icon')[index];
-        let playSong = document.getElementsByClassName('trending__play-icon')[index];
-      
-        moreIcon.style.display = 'block';
-        playSong.style.display = 'flex';
-    }
-    
-
-    hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('trending__more-icon')[index];
-        let playSong = document.getElementsByClassName('trending__play-icon')[index];
-
-        moreIcon.style.display = 'none';
-        playSong.style.display = 'none';
     }
 
     renderSongItem(song, index){
         return (
             <li
+                onMouseEnter={this.onMouseEnter.bind(this, index)}
+                onMouseLeave={this.onMouseLeave.bind(this, index)}
+                ref={this.listItem}
                 key={song.id}
                 className="trending__item trending__item--size trending__item--theme">
                 <div className="trending__imageholder">
@@ -119,7 +100,7 @@ export default class NewtrendingHomeLayout extends Component {
                 </div>
                 <span className="trending__rank">{song.id}</span>
                 <div className="trending__song-info">
-                    <h4 classNma="trending__song-name">{song.title}</h4>
+                    <h4 className="trending__song-name">{song.title}</h4>
                     <p>{song.artist[0]} 
                         <div className="trending__point"></div>
                         <span className="trending__views">{song.views}</span>

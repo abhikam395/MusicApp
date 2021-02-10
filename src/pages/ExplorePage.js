@@ -1,20 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import './explore.scss';
 
-const CategoriesExploreLayout = React.lazy(() => import('./../layouts/explore/CategoriesExploreLayout'));
-const NewAlbumsExploreLayout = React.lazy(() => import('../layouts/explore/NewAlbumsExploreLayout'));
-const MoodsGenresExploreLayout = React.lazy(() => import('../layouts/explore/MoodsGenresExploreLayout'));
-const TrendingExploreLayout = React.lazy(() => import('./../layouts/explore/TrendingExploreLayout'));
+const CategoriesLayout = React.lazy(() => import('./../layouts/explore/CategoriesExploreLayout'));
+const NewAlbumsLayout = React.lazy(() => import('../layouts/explore/NewAlbumsExploreLayout'));
+const MoodsGenresLayout = React.lazy(() => import('../layouts/explore/MoodsGenresExploreLayout'));
+const TrendingLayout = React.lazy(() => import('./../layouts/explore/TrendingExploreLayout'));
+const NewMusicVideosLayout = React.lazy(() => import('./../layouts/explore/NewMusicVideosExploreLayout'));
 
 export default class ExplorePage extends Component {
 
     render(){
         return(
             <Fragment>
-                <CategoriesExploreLayout/>
-                <NewAlbumsExploreLayout/>
-                <MoodsGenresExploreLayout/>
-                <TrendingExploreLayout/>
+                <CategoriesLayout/>
+                <NewAlbumsLayout/>
+                <MoodsGenresLayout/>
+                <TrendingLayout/>
+                <NewMusicVideosLayout/>
             </Fragment>
         )
     }

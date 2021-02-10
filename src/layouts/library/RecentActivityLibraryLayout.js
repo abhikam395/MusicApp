@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import './newalbumsexplore.scss';
+import './recentactivitylibrary.scss';
+import songImage from './../../../assets/images/song-image.jpg';
 
-import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
-import songImage from './../../../assets/images/song-image.jpg'
+import { 
+    NavigateNext, 
+    NavigateBefore, 
+    PlayArrow, 
+    MoreVert, 
+    History
+} from '@material-ui/icons';
 
-export default class NewAlbumsHomeLayout extends Component {
+export default class RecentActivityLibraryLayout extends Component {
 
     constructor(){
         super();
@@ -84,8 +90,8 @@ export default class NewAlbumsHomeLayout extends Component {
 
 
     showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
-        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('recentactivity__more-icon')[index];
+        let playSong = document.getElementsByClassName('recentactivity__play-icon')[index];
       
         moreIcon.style.display = 'block';
         playSong.style.display = 'flex';
@@ -93,8 +99,8 @@ export default class NewAlbumsHomeLayout extends Component {
     
 
     hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newalbums__more-icon')[index];
-        let playSong = document.getElementsByClassName('newalbums__play-icon')[index];
+        let moreIcon = document.getElementsByClassName('recentactivity__more-icon')[index];
+        let playSong = document.getElementsByClassName('recentactivity__play-icon')[index];
 
         moreIcon.style.display = 'none';
         playSong.style.display = 'none';
@@ -104,25 +110,25 @@ export default class NewAlbumsHomeLayout extends Component {
         return (
             <li
                 key={song.id}
-                className="newalbums__item newalbums__item--size newalbums__item--theme">
-                <div className="newalbums__imageholder newalbums__imageholder--size"
+                className="recentactivity__item recentactivity__item--size recentactivity__item--theme">
+                <div className="recentactivity__imageholder recentactivity__imageholder--size"
                     ref={this.imageHolder}
                     onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
                     onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
-                    <div className="newalbums__more-icon">
+                    <div className="recentactivity__more-icon">
                         <MoreVert/>
                     </div>
                     <img src={song.image} 
-                         className="newalbums__image newalbums__image--size"/>
+                         className="recentactivity__image recentactivity__image--size"/>
                     <div 
-                        className="newalbums__play-icon newalbums__play-icon--size">
+                        className="recentactivity__play-icon recentactivity__play-icon--size">
                         <PlayArrow/>
                     </div>
                 </div>
-                <h4 className="newalbums__song-name">
+                <h4 className="recentactivity__song-name">
                     {song.title}
                 </h4>
-                <p className="newalbums__artist-name">
+                <p className="recentactivity__artist-name">
                     {this.getArtistsName(song.artists)}
                 </p>
             </li>
@@ -137,28 +143,28 @@ export default class NewAlbumsHomeLayout extends Component {
         let { songs } = this.state;
 
         return (
-            <section className="newalbums newalbums--size">
+            <section className="recentactivity recentactivity--size">
                 <div className="center">
-                    <div className="newalbums__content newalbums__content--size">
-                        <div>
-                            <a href="#albums" className="newalbums__title">New albums and singles</a>
-                            <a href="#albums" className="newalbums__see-all">SEE ALL</a>
+                    <div className="recentactivity__content recentactivity__content--size">
+                        <div className="row">
+                            <h5 className="recentactivity__title">Recent Activity</h5>
+                            <a href="#" className="recentactivity__history-icon"><History/></a>
                         </div>
                         <div className="row">
                             <div 
-                                className="newalbums__icon newalbums__previous-icon" 
-                                id="newalbums-previous"
+                                className="recentactivity__icon recentactivity__previous-icon" 
+                                id="recentactivity-previous"
                                 ref={this.previousIcon}
                                 onClick={this.onPreviousButtonClick}>
                                 <NavigateBefore />
                             </div>
                             
-                            <ul className="newalbums__list newalbums__list--size"
+                            <ul className="recentactivity__list recentactivity__list--size"
                                 ref={this.list}>
                                 { this.renderSongList(songs) }
                             </ul>
-                            <div className="newalbums__icon newalbums__next-icon" 
-                                id="newalbums-next"
+                            <div className="recentactivity__icon recentactivity__next-icon" 
+                                id="recentactivity-next"
                                 ref={this.nextIcon}
                                 onClick={this.onNextButtonClick}>
                                 <NavigateNext />

@@ -1,6 +1,6 @@
-@import './../../assets/scss/common.scss';
+@import './../../../assets/scss/common.scss';
 
-.mixedsong{
+.recentactivity{
     color: white;
 
     &--size{
@@ -11,15 +11,11 @@
     &__content{
         display: flex;
         flex-direction: column;
-        padding: 50px 0;
-
-        &--size{
-
-        }
+        margin-top: 40px;
     }
 
     &__title{
-        font-size: 38px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -31,7 +27,6 @@
         &--size{
             width: 100%;
         }
-
     }
 
     &__item{
@@ -47,16 +42,21 @@
         }
     }
 
+    &__history-icon{
+        margin-left: 20px;
+        color: white;
+    }
+
     &__previous-icon{
         position: absolute;
         left: -20px;
-        top: 100px;
+        top: 70px;
     }
 
     &__next-icon{
         position: absolute;
         right: -20px;
-        top: 100px;
+        top: 70px;
     }
 
     &__icon{
@@ -73,11 +73,10 @@
     }
 
     &__image{
-        // position: relative;
 
         &--size{
             height: 100%;
-            width: 230px;
+            width: 180px;
         }
     }
 
@@ -112,8 +111,8 @@
         cursor: pointer;
 
         &--size{
-            height: 230px;
-            width: 230px;
+            height: 180px;
+            width: 180px;
         }
     }
 
@@ -131,6 +130,6 @@
 
 .row{
     position: relative;
-    margin: 50px 0;
+    margin: 10px 0;
     align-items: center;
 }
