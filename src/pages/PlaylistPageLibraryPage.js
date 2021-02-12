@@ -9,16 +9,26 @@ export default class PlaylistLibraryPage extends Component {
     constructor(){
         super();
         this.state = {
-            playlist: [
-
-            ]
+            overlayVisible: false
         }
+        this.onHideOverlay = this.onHideOverlay.bind(this);
+        this.showOverlayComponent = this.showOverlayComponent.bind(this);
+    }
+
+    onHideOverlay(){
+        this.setState({overlayVisible: false });
+    }
+
+    showOverlayComponent(){
+        this.setState({overlayVisible: true})
     }
 
     render(){
+        let { overlayVisible } = this.state;
+
         return(
             <Fragment>
-                <CreateNewPlaylist/>
+                { overlayVisible && <CreateNewPlaylist hideOverlay={this.onHideOverlay}/> }
                 <section className="playlistlibrary playlistlibrary--size center">
                     <select
                         name="filter" 
@@ -28,8 +38,10 @@ export default class PlaylistLibraryPage extends Component {
                         <option value="Z to A" className="filter__option">Z to A</option>
                     </select>
                     <div className="playlistlibrary__row">
-                        <a href="#"
-                            className="newplaylist newplaylist--size">
+                        <a  
+                            href="#"
+                            className="newplaylist newplaylist--size"
+                            onClick={this.showOverlayComponent}>
                             <img 
                                 className="newplaylist__image newplaylist__image--size"
                                 src={createPlaylistImage}

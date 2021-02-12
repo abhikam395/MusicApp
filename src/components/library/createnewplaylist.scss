@@ -28,7 +28,72 @@
         background-color: #212121;
     }
 
+    &__form{
+        margin-top: 30px;
+
+        &--size{
+            width: 100%;
+        }
+    }
+
+    &__input{
+        border: none;
+        background-color: inherit;
+        border-bottom: 2px solid #3ea6ff;
+        padding: 10px 5px;
+        width: 100%;
+        color: white;
+        margin-top: 30px;
+
+        &::placeholder{
+            color: lightgray;
+            font-size: 14px;
+        }
+    }
+
     h3{
         font-weight: 600;
+    }
+
+    &__privacy{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label{
+        font-size: 12px;
+    }
+
+    &__options{
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100px;
+        border: none;
+        background-color: inherit;
+        color: white;
+        padding: 5px 0;
+        border-bottom: 2px solid #3ea6ff;
+    }
+
+    &__buttons{
+        margin-top: 30px;
+        float: inline-end;
+    }
+
+    &__cancel-button{
+        padding: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: inherit;
+        color: white;
+        font-weight: 600;
+    }
+
+    &__save-button{
+        margin-left: 20px;
+        padding: 5px;
+        cursor: pointer;
+        font-weight: 500;
     }
 }
