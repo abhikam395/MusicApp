@@ -15,6 +15,7 @@ export default class NavbarCenterComponent extends Component {
             previousListItem: null,
             searchbarComponentVisible: false
         };
+        this.hideSearchbar = this.hideSearchbar.bind(this);
     }
 
     componentDidMount(){
@@ -28,8 +29,10 @@ export default class NavbarCenterComponent extends Component {
      * @param {*} event 
      */
     onClick(index, event){
-        if(index == 3)
+        if(index == 3){
             this.setState({ searchbarComponentVisible: true })
+            return;
+        }
 
         let context = event.target.parentNode;
         let { previousListItem } = this.state;
@@ -38,6 +41,10 @@ export default class NavbarCenterComponent extends Component {
             previousListItem.style.color = 'grey';
         this.setState({ previousListItem: context });
         context.style.color = 'white';
+    }
+
+    hideSearchbar(){
+        this.setState({ searchbarComponentVisible: false })
     }
 
     getLinkPath(name){
@@ -78,7 +85,7 @@ export default class NavbarCenterComponent extends Component {
 
         return (
             <div className="navbar__center navbar__center--size">
-                { searchbarComponentVisible && <SearchbarComponent/>}
+                { searchbarComponentVisible && <SearchbarComponent hideSearchbar={this.hideSearchbar}/>}
                 <ul className="navbar__menulist" 
                     ref={this.list}>
                     { this.renderMenuItems(this.state.menuItems) }

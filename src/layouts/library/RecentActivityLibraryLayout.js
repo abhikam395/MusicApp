@@ -146,7 +146,7 @@ export default class RecentActivityLibraryLayout extends Component {
             <section className="recentactivity recentactivity--size">
                 <div className="center">
                     <div className="recentactivity__content recentactivity__content--size">
-                        <div className="row">
+                        <div className="recentactivity__label">
                             <h5 className="recentactivity__title">Recent Activity</h5>
                             <a href="#" className="recentactivity__history-icon"><History/></a>
                         </div>

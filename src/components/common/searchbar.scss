@@ -4,16 +4,54 @@
     left: 0;
     right: 0;
     margin: auto;
-    border: 1px solid rgba($color: grey, $alpha: 0.4);
+    border: 1px solid rgba($color: grey, $alpha: 0.2);
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
 
     &--size{
-        height: 55px;
+        height: 50px;
         width: 45%;
     }
 
     &--theme{
         background-color: #212121;
+    }
+
+    &__backarrow{
+        cursor: pointer;
+        margin: 0 10px;
+    }
+
+    &__input{
+        border: none;
+        color: white;
+        font-size: 18px;
+
+        &:focus{
+            outline: none;
+        }
+
+        &::placeholder{
+            color: #535353;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        
+        &--size{
+            height: 48px;
+            width: 100%;
+        }
+
+        &--theme{
+            background-color: #212121;
+        }
+    }
+
+    &__clear{
+        cursor: pointer;
+        margin: 0 10px;
     }
 
 }
