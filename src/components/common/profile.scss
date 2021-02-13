@@ -1,0 +1,41 @@
+.profile{
+    position: fixed;
+    top: 50px;
+    right: 30px;
+    border-radius: 2;
+    border: 1px solid rgba($color: gray, $alpha: 0.2);
+
+    &--size{
+        height: auto;
+        min-width: 300px;
+    }
+
+    &--theme{
+        background-color: #212121;
+    }
+
+    &__options{
+        list-style: none;
+        padding: 20px;
+    }
+
+    &__option{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        cursor: pointer;
+        
+        &--size{
+            height: 40px;
+        }
+
+        &-icon{
+            margin-right: 10px;
+        }
+    }
+    
+    &__line{
+        border: none;
+        border-top: 1px solid rgba($color: gray, $alpha: 0.3);
+    }
+}
