@@ -4,6 +4,7 @@ import './main.scss';
 import { 
     BrowserRouter as Router, 
     Link, 
+    Redirect, 
     Route, 
     Switch 
 } 
@@ -22,9 +23,12 @@ export default class MainPage extends Component {
                     <Router>
                         <NavbarComponent/>
                         <Switch>
-                            <Route path="/" exact component={HomePage}/>
-                            <Route path="/library" component={LibraryPage}/>
-                            <Route path="/explore" component={ExplorePage}/>
+                            <Route exact path="/" component={HomePage}/>
+                            <Route exact path="/library" component={LibraryPage}/>
+                            <Route exacts path="/explore" component={ExplorePage}/>
+                            <Route path="/library/*" render={() => {
+                                return <Redirect to="/library/artists"></Redirect>
+                            }} />
                         </Switch>
                     </Router>
                 </Suspense>

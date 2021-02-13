@@ -12,6 +12,7 @@
     }
 
     &__menuitem{
+        display: flex;
         cursor: pointer;
         margin-right: 50px;
         font-weight: 500;

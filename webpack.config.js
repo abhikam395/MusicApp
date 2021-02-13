@@ -6,7 +6,8 @@ module.exports = {
   mode: 'development',
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    // publicPath: 'dist/'
   },
   devServer: {
     historyApiFallback: true

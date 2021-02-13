@@ -19,19 +19,24 @@ export default class LibraryPage extends Component {
     }
 
     render(){
-        let { path, url } = this.props.match;
+        let { match } = this.props;
+
         return (
             <Fragment>
                 <RecentActivityLayout/>
                 <MenusLibraryComponent {...this.props}/>
                 <Suspense fallback={<div>Loading</div>}>
-                    <Switch>
-                        <Route path={path} exact component={PlaylistsPage}/>
-                        <Route path={`${path}/albums`} component={AlbumsPage}/>
-                        <Route path={`${path}/songs`} component={SongsPage}/>
-                        <Route path={`${path}/artists`} component={ArtistsPage}/>
-                        <Route path={`${path}/subscriptions`} component={SubscriptionsPage}/>
-                    </Switch>
+                    {/* <Switch> */}
+
+                        <Route path={match.path} exact component={PlaylistsPage}/>
+                        <Route path={`${match.path}/albums`} component={AlbumsPage}/>
+                        <Route path={`${match.path}/songs`} component={SongsPage}/>
+                        <Route path={`${match.path}/artists`} component={ArtistsPage}/>
+                        <Route path={`${match.path}/subscriptions`} component={SubscriptionsPage}/>
+                        <Route path="/library/artists" exact render={() => {
+                            <div>Not found</div>
+                        }}></Route>
+                    {/* </Switch> */}
                 </Suspense>
             </Fragment>
         )

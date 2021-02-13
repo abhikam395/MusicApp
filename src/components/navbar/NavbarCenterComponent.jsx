@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './navbarcenter.scss';
 
 import { Link } from 'react-router-dom';
 import { Search } from '@material-ui/icons';
+
+const SearchbarComponent = React.lazy(() => import('./../common/SearchbarComponent.jsx'));
  
 export default class NavbarCenterComponent extends Component {
 
@@ -10,10 +12,9 @@ export default class NavbarCenterComponent extends Component {
         super(props);
         this.state = {
             menuItems: ['Home', 'Explore', 'Library', 'Search'],
-            previousListItem: null
+            previousListItem: null,
+            searchbarComponentVisible: false
         };
-        // this.item = React.createRef([]);
-        this.onClick = this.onClick.bind(this);
     }
 
     componentDidMount(){
@@ -26,7 +27,10 @@ export default class NavbarCenterComponent extends Component {
      * select or unselect menu item on click
      * @param {*} event 
      */
-    onClick(event){
+    onClick(index, event){
+        if(index == 3)
+            this.setState({ searchbarComponentVisible: true })
+
         let context = event.target.parentNode;
         let { previousListItem } = this.state;
 
@@ -43,12 +47,21 @@ export default class NavbarCenterComponent extends Component {
     }
 
     renderMenuItem(item, index){
+        if(index == 3){
+            return (
+                <li className="navbar__menuitem navbar__menuitem--size" 
+                    key={index}
+                    onClick={this.onClick.bind(this, index)}>
+                    <Search/>
+                    {item}
+                </li>
+            )
+        }
         return (
             <li className="navbar__menuitem navbar__menuitem--size" 
                 key={index}
-                onClick={this.onClick}>
+                onClick={this.onClick.bind(this, index)}>
                 <Link to={this.getLinkPath(item)}>
-                    {index == 3 ? <Search/> : ""}
                     {item}
                 </Link>
             </li>
@@ -60,8 +73,12 @@ export default class NavbarCenterComponent extends Component {
     }
 
     render(){
+        let { searchbarComponentVisible } = this.state;
+        console.log(searchbarComponentVisible)
+
         return (
             <div className="navbar__center navbar__center--size">
+                { searchbarComponentVisible && <SearchbarComponent/>}
                 <ul className="navbar__menulist" 
                     ref={this.list}>
                     { this.renderMenuItems(this.state.menuItems) }

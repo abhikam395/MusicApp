@@ -1,0 +1,19 @@
+.searchbar{
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid rgba($color: grey, $alpha: 0.4);
+    border-radius: 2px;
+
+    &--size{
+        height: 55px;
+        width: 45%;
+    }
+
+    &--theme{
+        background-color: #212121;
+    }
+
+}

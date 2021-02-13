@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './artistslibrary.scss';
 
 export default class ArtistsLibraryPage extends Component {
 
@@ -6,7 +7,7 @@ export default class ArtistsLibraryPage extends Component {
         return(
             <section className="artistslibrary artistslibrary--size">
                 <div className="center">
-                    ArtistsLibraryPage
+                    Artists
                 </div>
             </section>
         )
