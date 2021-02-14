@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './moodsgenresexplore.scss';
 
-import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
-import songImage from './../../../assets/images/song-image.jpg'
+import { NavigateNext, NavigateBefore } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+
+import getRendomColor from './../../utils/generateRandomColor';
 
 export default class MoodsGenresExploreLayout extends Component {
 
@@ -75,53 +77,15 @@ export default class MoodsGenresExploreLayout extends Component {
         list.scrollBy({left: sumSize, behavior: 'smooth'});
     }
 
-    hidePreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "none"
-    }
-
-    showPreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "flex"
-    }
-
-    hideNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "none"
-    }
-
-    showNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "flex"
-    }
-
-
-    showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('moodsgenres__more-icon')[index];
-        let playSong = document.getElementsByClassName('moodsgenres__play-icon')[index];
-      
-        moreIcon.style.display = 'block';
-        playSong.style.display = 'flex';
-    }
-    
-
-    hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('moodsgenres__more-icon')[index];
-        let playSong = document.getElementsByClassName('moodsgenres__play-icon')[index];
-
-        moreIcon.style.display = 'none';
-        playSong.style.display = 'none';
-    }
-
     renderSongItem(genre){
+        let color = getRendomColor();
+
         return (
             <li
                 ref={this.listItem}
                 key={genre.id}
                 className="moodsgenres__item moodsgenres__item--size moodsgenres__item--theme">
-                <div className="moodsgenres__color">
-
-                </div>
+                <div className="moodsgenres__color" style={{ backgroundColor: color}}/>
                 <h5 className="moodsgenres__name">
                     {genre.name}
                 </h5>
@@ -141,8 +105,14 @@ export default class MoodsGenresExploreLayout extends Component {
                 <div className="center">
                     <div className="moodsgenres__content moodsgenres__content--size">
                         <div>
-                            <a href="#albums" className="moodsgenres__title">Moods & genres</a>
-                            <a href="#albums" className="moodsgenres__see-all">SEE ALL</a>
+                            <Link to="/moods_and_genres"
+                                className="moodsgenres__title">
+                                    Moods & genres
+                            </Link>
+                            <Link to="/moods_and_genres"
+                                className="moodsgenres__see-all">
+                                    SEE ALL
+                            </Link>
                         </div>
                         <div className="row">
                             <div 

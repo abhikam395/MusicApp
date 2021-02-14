@@ -18,6 +18,7 @@ const ExplorePage = React.lazy(() => import('./../pages/ExplorePage'));
 const LibraryPage = React.lazy(() => import('./../pages/LibraryPage'));
 const AlbumsPage = React.lazy(() => import('./../pages/newreleases/AlbumsPage'));
 const PageNotFound = React.lazy(() => import('./../pages/PageNotFound'));
+const MoodsAndGenrePage = React.lazy(() => import('./../pages/MoodsAndGenrePage'));
 
 export default function MainPage() {
     return(
@@ -30,6 +31,7 @@ export default function MainPage() {
                         <Route path="/library" component={LibraryPage}/>
                         <Route path="/explore" component={ExplorePage}/>
                         <Route exact path="/new_releases/albums" component={AlbumsPage}/>
+                        <Route exact path="/moods_and_genres" component={MoodsAndGenrePage}/>
                         <Route component={PageNotFound}/>
                     </Switch>
                 </Router>
