@@ -10,8 +10,7 @@ import {
 } 
 from 'react-router-dom';
 
-import Loadable from 'react-loadable';
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import LoadingComponent from './../components/common/LoadingComponent.jsx';
 
 const NavbarComponent = React.lazy(() => import('./../components/navbar/index.jsx'));
 const HomePage = React.lazy(() => import('./../pages/HomePage'));
@@ -23,7 +22,7 @@ const PageNotFound = React.lazy(() => import('./../pages/PageNotFound'));
 export default function MainPage() {
     return(
         <div className="main main--size main--theme" id="main">
-            <Suspense fallback={<h1>Loading</h1>}>
+            <Suspense fallback={<LoadingComponent/>}>
                 <Router>
                     <NavbarComponent/>
                     <Switch>

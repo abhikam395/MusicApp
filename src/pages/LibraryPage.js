@@ -2,6 +2,8 @@ import React, { Component, Fragment, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './library.scss';
 
+import LoadingComponent from './../components/common/LoadingComponent.jsx';
+
 const RecentActivityLayout = React.lazy(() => import('./../layouts/library/RecentActivityLibraryLayout'));
 const MenusLibraryComponent = React.lazy(() => import('./../components/library/MenusLibraryComponent.jsx'));
 
@@ -20,7 +22,7 @@ export default function LibraryPage(props) {
         <Fragment>
             <RecentActivityLayout/>
             <MenusLibraryComponent {...props} />
-            <Suspense fallback={<div>Loading</div>}>
+            <Suspense fallback={<LoadingComponent/>}>
                 <Route path={match.path} exact component={PlaylistsPage}/>
                 <Route path={`${match.path}/albums`} component={AlbumsPage}/>
                 <Route path={`${match.path}/songs`} component={SongsPage}/>
