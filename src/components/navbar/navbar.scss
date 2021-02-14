@@ -8,6 +8,7 @@
     position: sticky;
     top: 0px;
     z-index: 100;
+    border-bottom: 1px solid rgba($color: gray, $alpha: 0.2);
 
     &--size{
         height: $navbar-height;

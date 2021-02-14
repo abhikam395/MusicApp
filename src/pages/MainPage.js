@@ -10,29 +10,31 @@ import {
 } 
 from 'react-router-dom';
 
+import Loadable from 'react-loadable';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 const NavbarComponent = React.lazy(() => import('./../components/navbar/index.jsx'));
 const HomePage = React.lazy(() => import('./../pages/HomePage'));
 const ExplorePage = React.lazy(() => import('./../pages/ExplorePage'));
 const LibraryPage = React.lazy(() => import('./../pages/LibraryPage'));
+const AlbumsPage = React.lazy(() => import('./../pages/newreleases/AlbumsPage'));
+const PageNotFound = React.lazy(() => import('./../pages/PageNotFound'));
 
-export default class MainPage extends Component {
-    render() {
-        return(
-            <div className="main main--size main--theme" id="main">
-                <Suspense fallback={<h1>Loading</h1>}>
-                    <Router>
-                        <NavbarComponent/>
-                        <Switch>
-                            <Route exact path="/" component={HomePage}/>
-                            <Route exact path="/library" component={LibraryPage}/>
-                            <Route exacts path="/explore" component={ExplorePage}/>
-                            <Route path="/library/*" render={() => {
-                                return <Redirect to="/library/artists"></Redirect>
-                            }} />
-                        </Switch>
-                    </Router>
-                </Suspense>
-            </div>
-        )
-    }
+export default function MainPage() {
+    return(
+        <div className="main main--size main--theme" id="main">
+            <Suspense fallback={<h1>Loading</h1>}>
+                <Router>
+                    <NavbarComponent/>
+                    <Switch>
+                        <Route exact path="/" component={HomePage}/>
+                        <Route path="/library" component={LibraryPage}/>
+                        <Route path="/explore" component={ExplorePage}/>
+                        <Route exact path="/new_releases/albums" component={AlbumsPage}/>
+                        <Route component={PageNotFound}/>
+                    </Switch>
+                </Router>
+            </Suspense>
+        </div>
+    )
 }

@@ -49,6 +49,10 @@
             color: lightgray;
             font-size: 14px;
         }
+
+        &:focus{
+            outline: none;
+        }
     }
 
     h3{

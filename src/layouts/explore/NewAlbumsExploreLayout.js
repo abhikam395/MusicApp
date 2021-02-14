@@ -3,6 +3,7 @@ import './newalbumsexplore.scss';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 import songImage from './../../../assets/images/song-image.jpg'
+import { Link } from 'react-router-dom';
 
 export default class NewAlbumsHomeLayout extends Component {
 
@@ -141,8 +142,16 @@ export default class NewAlbumsHomeLayout extends Component {
                 <div className="center">
                     <div className="newalbums__content newalbums__content--size">
                         <div>
-                            <a href="#albums" className="newalbums__title">New albums and singles</a>
-                            <a href="#albums" className="newalbums__see-all">SEE ALL</a>
+                            <Link 
+                                to="/new_releases/albums" 
+                                className="newalbums__title">
+                                New albums and singles
+                            </Link>
+                            <Link 
+                                to="/new_releases/albums" 
+                                className="newalbums__see-all">
+                                SEE ALL
+                            </Link>
                         </div>
                         <div className="row">
                             <div 

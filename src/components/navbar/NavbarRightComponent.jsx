@@ -11,11 +11,16 @@ export default class NavbarRightComponent extends Component {
         this.state = {
             profileComponentVisible: false
         }
-        this.onIconClick = this.onIconClick.bind(this);
+        this.showProfileComponent = this.showProfileComponent.bind(this);
+        this.hideProfileComponent = this.hideProfileComponent.bind(this);
     }
 
-    onIconClick(){
-        this.setState({ profileComponentVisible: true })
+    showProfileComponent(){
+        this.setState({ profileComponentVisible: true });
+    }
+
+    hideProfileComponent(){
+        this.setState({ profileComponentVisible: false });
     }
 
     render(){
@@ -23,11 +28,11 @@ export default class NavbarRightComponent extends Component {
 
         return(
             <Fragment>
-                { profileComponentVisible && <ProfileComponent/> }
+                { profileComponentVisible && <ProfileComponent hide={this.hideProfileComponent} /> }
                 <div className="navbar__right navbar__right--size">
                     <AccountCircle 
                         className="navbar__profile navbar__profile--size"
-                        onClick={this.onIconClick}
+                        onClick={this.showProfileComponent}
                     />
                 </div>
             </Fragment>

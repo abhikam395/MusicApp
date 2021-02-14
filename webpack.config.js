@@ -5,9 +5,9 @@ module.exports = {
   entry: './src/main.js',
   mode: 'development',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/build',
     filename: 'bundle.js',
-    // publicPath: '/'
+    publicPath: '/'
   },
   devServer: {
     historyApiFallback: true

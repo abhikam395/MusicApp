@@ -11,7 +11,7 @@ import {
 }  from '@material-ui/icons';
 import songImage from './../../../assets/images/song-image.jpg'
 
-export default class NewtrendingHomeLayout extends Component {
+export default class NewTrendingHomeLayout extends Component {
 
     constructor(){
         super();
@@ -102,7 +102,7 @@ export default class NewtrendingHomeLayout extends Component {
                 <div className="trending__song-info">
                     <h4 className="trending__song-name">{song.title}</h4>
                     <p>{song.artist[0]} 
-                        <div className="trending__point"></div>
+                        <span className="trending__point"></span>
                         <span className="trending__views">{song.views}</span>
                         views
                     </p>

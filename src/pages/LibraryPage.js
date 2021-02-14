@@ -12,33 +12,21 @@ const SongsPage = React.lazy(() => import('./../pages/SongsLibraryPage'));
 const SubscriptionsPage = React.lazy(() => import('./../pages/SubscriptionsLibraryPage'));
 
 
-export default class LibraryPage extends Component {
+export default function LibraryPage(props) {
 
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        let { match } = this.props;
-
-        return (
-            <Fragment>
-                <RecentActivityLayout/>
-                <MenusLibraryComponent {...this.props}/>
-                <Suspense fallback={<div>Loading</div>}>
-                    {/* <Switch> */}
-
-                        <Route path={match.path} exact component={PlaylistsPage}/>
-                        <Route path={`${match.path}/albums`} component={AlbumsPage}/>
-                        <Route path={`${match.path}/songs`} component={SongsPage}/>
-                        <Route path={`${match.path}/artists`} component={ArtistsPage}/>
-                        <Route path={`${match.path}/subscriptions`} component={SubscriptionsPage}/>
-                        <Route path="/library/artists" exact render={() => {
-                            <div>Not found</div>
-                        }}></Route>
-                    {/* </Switch> */}
-                </Suspense>
-            </Fragment>
-        )
-    }
+    let { match } = props;
+    
+    return (
+        <Fragment>
+            <RecentActivityLayout/>
+            <MenusLibraryComponent {...props} />
+            <Suspense fallback={<div>Loading</div>}>
+                <Route path={match.path} exact component={PlaylistsPage}/>
+                <Route path={`${match.path}/albums`} component={AlbumsPage}/>
+                <Route path={`${match.path}/songs`} component={SongsPage}/>
+                <Route path={`${match.path}/artists`} component={ArtistsPage}/>
+                <Route path={`${match.path}/subscriptions`} component={SubscriptionsPage}/>
+            </Suspense>
+        </Fragment>
+    )
 }

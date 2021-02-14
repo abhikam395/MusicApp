@@ -18,8 +18,8 @@ from '@material-ui/icons';
 
 export default class ProfileComponent extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             options1 : [
                 {id: 1, name: 'Your channel', icon: AccountBox },
@@ -36,6 +36,23 @@ export default class ProfileComponent extends Component {
                 {id: 6, name: 'Send feedback', icon: Feedback }
             ]
         }
+    }
+
+    componentDidMount(){
+        //hide profile component on main element click
+        document.getElementById('main').addEventListener('click', () => {
+            this.props.hide();
+        })
+
+        //stop main element click in profile component
+        document.getElementById('profile').addEventListener('click', (e) => {
+            e.stopPropagation();
+        })
+    }
+
+    onViewPortClick(){
+        let document = document.getElementById('app');
+        console.log(document);
     }
 
     renderIcon(icon){
@@ -62,7 +79,7 @@ export default class ProfileComponent extends Component {
         let { options1, options2 } = this.state;
 
         return (
-            <div className="profile profile--size profile--theme">
+            <div className="profile profile--size profile--theme" id="profile">
                 <ul className="profile__options">
                     { this.renderOptions(options1) }
                 </ul>

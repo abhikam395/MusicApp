@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Suspense } from 'react';
 import './navbarcenter.scss';
 
 import { Link } from 'react-router-dom';
@@ -50,7 +50,7 @@ export default class NavbarCenterComponent extends Component {
     getLinkPath(name){
         if(name == 'Home')
             return '/';
-        return name.toLowerCase();    
+        return '/' + name.toLowerCase();    
     }
 
     renderMenuItem(item, index){
@@ -81,11 +81,14 @@ export default class NavbarCenterComponent extends Component {
 
     render(){
         let { searchbarComponentVisible } = this.state;
-        console.log(searchbarComponentVisible)
 
         return (
             <div className="navbar__center navbar__center--size">
-                { searchbarComponentVisible && <SearchbarComponent hideSearchbar={this.hideSearchbar}/>}
+                { searchbarComponentVisible && 
+                    <Suspense>
+                        <SearchbarComponent hideSearchbar={this.hideSearchbar}/>
+                    </Suspense>
+                }
                 <ul className="navbar__menulist" 
                     ref={this.list}>
                     { this.renderMenuItems(this.state.menuItems) }
