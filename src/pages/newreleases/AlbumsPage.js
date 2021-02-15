@@ -35,8 +35,8 @@ export default class AlbumsPage extends Component {
                     className="album album--size"
                     key={index}>
                     <div 
-                        onMouseOver={this.hideIcons.bind(this, index)}
-                        onMouseLeave={this.showIcons.bind(this, index)}
+                        onMouseOver={this.showIcons.bind(this, index)}
+                        onMouseLeave={this.hideIcons.bind(this, index)}
                         className="album__imageholder 
                             album__imageholder--size">
                         <PlayIcon 
@@ -67,12 +67,12 @@ export default class AlbumsPage extends Component {
         let albums = getAlbums();
 
         return (
-            <section className="center albumlayout">
+            <main className="center albumlayout">
                 <h1 className="albumlayout__title">Albums and singles</h1>
                 <ul className="albums albums--size">
                     { this.renderAlbums(albums) }
                 </ul>
-            </section>
+            </main>
         )
     }
 }

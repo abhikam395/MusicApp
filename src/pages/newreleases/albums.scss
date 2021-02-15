@@ -65,9 +65,11 @@
         position: absolute;
         right: 10px;
         bottom: 10px;
+        visibility: hidden;
     }
 
     &__optionsicon{
+        visibility: hidden;
         position: absolute;
         right: 10px;
         top: 10px;

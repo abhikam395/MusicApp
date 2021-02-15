@@ -1,0 +1,20 @@
+.moodsgenres{
+    padding-top: 30px;
+
+    &__title{
+        font-size: 38px;
+        letter-spacing: -0.9px;
+        font-weight: 700;
+    }
+
+    &__subtitle{
+        margin: 25px 0;
+    }
+
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 15px;
+        margin: 20px 0;
+    }
+}
