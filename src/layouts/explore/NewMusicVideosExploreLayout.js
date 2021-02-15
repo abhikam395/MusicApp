@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './newmusicvideosexplore.scss';
 
-import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
+import { NavigateNext, NavigateBefore } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 import songImage from './../../../assets/images/song-image.jpg'
+
+import NewMusicVideoComponent from './../../components/common/NewMusicVideoComponent.jsx';
 
 export default class NewMusicVideosExploreLayout extends Component {
 
@@ -34,10 +37,6 @@ export default class NewMusicVideosExploreLayout extends Component {
         this.onNextButtonClick = this.onNextButtonClick.bind(this);
     }
 
-    getArtistsName(artists){
-        return artists.join(", ");
-    }
-
     onPreviousButtonClick(){
         //songs list
         let list = this.list.current;
@@ -62,75 +61,15 @@ export default class NewMusicVideosExploreLayout extends Component {
         console.log(list)
     }
 
-    hidePreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "none"
-    }
-
-    showPreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "flex"
-    }
-
-    hideNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "none"
-    }
-
-    showNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "flex"
-    }
-
-
-    showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newmusicvideo__more-icon')[index];
-        let playSong = document.getElementsByClassName('newmusicvideo__play-icon')[index];
-      
-        moreIcon.style.display = 'block';
-        playSong.style.display = 'flex';
-    }
-    
-
-    hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('newmusicvideo__more-icon')[index];
-        let playSong = document.getElementsByClassName('newmusicvideo__play-icon')[index];
-
-        moreIcon.style.display = 'none';
-        playSong.style.display = 'none';
-    }
-
-    renderSongItem(song, index){
-        return (
-            <li
-                key={song.id}
-                className="newmusicvideo__item newmusicvideo__item--size newmusicvideo__item--theme">
-                <div className="newmusicvideo__imageholder newmusicvideo__imageholder--size"
-                    ref={this.imageHolder}
-                    onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
-                    onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
-                    <div className="newmusicvideo__more-icon">
-                        <MoreVert/>
-                    </div>
-                    <img src={song.image} 
-                         className="newmusicvideo__image newmusicvideo__image--size"/>
-                    <div 
-                        className="newmusicvideo__play-icon newmusicvideo__play-icon--size">
-                        <PlayArrow/>
-                    </div>
-                </div>
-                <h4 className="newmusicvideo__song-name">
-                    {song.title}
-                </h4>
-                <p className="newmusicvideo__artist-name">
-                    {this.getArtistsName(song.artists)}
-                </p>
-            </li>
-        )
-    }
-
     renderSongList(songs){
-        return songs.map((song, index) => this.renderSongItem(song, index));
+        return songs.map((song, index) => 
+            <NewMusicVideoComponent
+                key={index}
+                index={index}
+                song={song}
+                ref={this.imageHolder}
+                />
+            );
     }
 
     render(){
@@ -141,8 +80,16 @@ export default class NewMusicVideosExploreLayout extends Component {
                 <div className="center">
                     <div className="newmusicvideo__content newmusicvideo__content--size">
                         <div>
-                            <a href="#albums" className="newmusicvideo__title">New albums and singles</a>
-                            <a href="#albums" className="newmusicvideo__see-all">SEE ALL</a>
+                            <Link 
+                                to="/new_releases/videos" 
+                                className="newmusicvideo__title">
+                                New albums and single
+                            </Link>
+                            <Link 
+                                to="/new_releases/videos" 
+                                className="newmusicvideo__see-all">
+                                SEE ALL
+                            </Link>
                         </div>
                         <div className="row">
                             <div 

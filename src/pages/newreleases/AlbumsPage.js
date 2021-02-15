@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './albums.scss';
 
-import { getAlbums } from './../../apis/albums-api';
+import { getAlbums } from './../../apis/albumsApi';
 import { PlayCircleFilledWhiteOutlined, MoreVertOutlined } from '@material-ui/icons';
 
 export default class AlbumsPage extends Component {
@@ -37,7 +37,7 @@ export default class AlbumsPage extends Component {
                     <div 
                         onMouseOver={this.showIcons.bind(this, index)}
                         onMouseLeave={this.hideIcons.bind(this, index)}
-                        className="album__imageholder 
+                        className="album__imageholder
                             album__imageholder--size">
                         <PlayIcon 
                             ref={this.playIcon}

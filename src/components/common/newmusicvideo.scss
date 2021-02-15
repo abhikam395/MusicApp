@@ -1,0 +1,91 @@
+.newmusicvideo{
+
+    &__item{
+        margin-right: 30px;
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        &--size{
+            height: auto;
+            width: auto;
+        }
+    }
+
+    &__icon{
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    &__image{
+        // position: relative;
+
+        &--size{
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__play-icon{
+        display: none;
+        cursor: pointer;
+        color: inherit;
+        border-radius: 20px;
+        background-color: rgba($color: grey, $alpha: .4);
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0; 
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        // transform: translateX(50%);
+
+
+        &--size{
+            height: 40px;
+            width: 40px;
+        }
+
+    }
+
+    &__more-icon{
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    &__imageholder{
+        position: relative;
+        cursor: pointer;
+        color: white;
+
+        &--size{
+            height: 220px;
+            width: 400px;
+        }
+    }
+
+    &__song-name{
+        margin-top: 10px;
+        color: white;
+    }
+
+    &__artist-name{
+        margin-top: 3px;
+        color: grey;
+        font-weight: 500;
+    }
+
+}

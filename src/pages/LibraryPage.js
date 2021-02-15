@@ -1,5 +1,5 @@
 import React, { Component, Fragment, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './library.scss';
 
 import LoadingComponent from './../components/common/LoadingComponent.jsx';
@@ -23,7 +23,10 @@ export default function LibraryPage(props) {
             <RecentActivityLayout/>
             <MenusLibraryComponent {...props} />
             <Suspense fallback={<LoadingComponent/>}>
-                <Route path={match.path} exact component={PlaylistsPage}/>
+                <Route path={match.path} exact>
+                    <Redirect to={`${match.path}/playlists`}/>
+                </Route>
+                <Route path={`${match.path}/playlists`} component={PlaylistsPage}/>
                 <Route path={`${match.path}/albums`} component={AlbumsPage}/>
                 <Route path={`${match.path}/songs`} component={SongsPage}/>
                 <Route path={`${match.path}/artists`} component={ArtistsPage}/>
