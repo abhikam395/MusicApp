@@ -17,7 +17,7 @@ export default class MoodsAndGenrePage extends Component {
     }
 
     renderMoodsGenres(list){
-        return list.map((item) => <MoodGenreCard item={item}/>)
+        return list.map((item) => <MoodGenreCard key={item.id} item={item}/>)
     }
 
     render(){
@@ -25,15 +25,15 @@ export default class MoodsAndGenrePage extends Component {
             <main className="center moodsgenres">
                 <h1 className="moodsgenres__title">Moods & genres</h1>
                 <h3 className="moodsgenres__subtitle">For you</h3>
-                <ul class="moodsgenres__list">
+                <ul className="moodsgenres__list">
                     { this.renderMoodsGenres(getMoodsGenresForMe()) }
                 </ul>
                 <h3 className="moodsgenres__subtitle">Moods</h3>
-                <ul class="moodsgenres__list">
+                <ul className="moodsgenres__list">
                     { this.renderMoodsGenres(getMoods()) }
                 </ul>
                 <h3 className="moodsgenres__subtitle">Genres</h3>
-                <ul class="moodsgenres__list">
+                <ul className="moodsgenres__list">
                     { this.renderMoodsGenres(getGenres()) }
                 </ul>
             </main>
