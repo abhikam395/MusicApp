@@ -12,7 +12,7 @@ export default class NewMusicVideosExploreLayout extends Component {
     constructor(){
         super();
         this.state = {
-            songs : [
+            videos : [
                 {id: 1, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
                 {id: 2, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
                 {id: 3, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
@@ -46,7 +46,6 @@ export default class NewMusicVideosExploreLayout extends Component {
         let sumSize = imageHolderSize + 30;
         //scroll backward
         list.scrollBy({left: -sumSize, behavior: 'smooth'});
-        console.log(list)
     }
 
     onNextButtonClick(){
@@ -58,22 +57,21 @@ export default class NewMusicVideosExploreLayout extends Component {
         let sumSize = imageHolderSize + 30;
         //scroll forword
         list.scrollBy({left: sumSize, behavior: 'smooth'});
-        console.log(list)
     }
 
-    renderSongList(songs){
-        return songs.map((song, index) => 
+    renderSongList(videos){
+        return videos.map((video, index) => 
             <NewMusicVideoComponent
                 key={index}
                 index={index}
-                song={song}
+                video={video}
                 ref={this.imageHolder}
                 />
             );
     }
 
     render(){
-        let { songs } = this.state;
+        let { videos } = this.state;
 
         return (
             <section className="newmusicvideo newmusicvideo--size">
@@ -83,7 +81,7 @@ export default class NewMusicVideosExploreLayout extends Component {
                             <Link 
                                 to="/new_releases/videos" 
                                 className="newmusicvideo__title">
-                                New albums and single
+                                New music videos
                             </Link>
                             <Link 
                                 to="/new_releases/videos" 
@@ -102,7 +100,7 @@ export default class NewMusicVideosExploreLayout extends Component {
                             
                             <ul className="newmusicvideo__list newmusicvideo__list--size"
                                 ref={this.list}>
-                                { this.renderSongList(songs) }
+                                { this.renderSongList(videos) }
                             </ul>
                             <div className="newmusicvideo__icon newmusicvideo__next-icon" 
                                 id="newmusicvideo-next"

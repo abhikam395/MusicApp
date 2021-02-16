@@ -22,20 +22,22 @@ const MoodsAndGenrePage = React.lazy(() => import('./../pages/MoodsAndGenrePage'
 export default function MainPage() {
     return(
         <div className="main main--size main--theme" id="main">
-            <Suspense fallback={<LoadingComponent/>}>
                 <Router>
-                    <NavbarComponent/>
-                    <Switch>
-                        <Route exact path="/" component={HomePage}/>
-                        <Route path="/library" component={LibraryPage}/>
-                        <Route path="/explore" component={ExplorePage}/>
-                        <Route exact path="/new_releases/albums" component={AlbumsPage}/>
-                        <Route exact path="/new_releases/videos" component={VideosPage}/>
-                        <Route exact path="/moods_and_genres" component={MoodsAndGenrePage}/>
-                        <Route component={PageNotFound}/>
-                    </Switch>
+                    <Suspense fallback={<LoadingComponent/>}>
+                        <NavbarComponent/>
+                        <Suspense fallback={<LoadingComponent/>}>
+                            <Switch>
+                                <Route exact path="/" component={HomePage}/>
+                                <Route path="/library" component={LibraryPage}/>
+                                <Route path="/explore" component={ExplorePage}/>
+                                <Route exact path="/new_releases/albums" component={AlbumsPage}/>
+                                <Route exact path="/new_releases/videos" component={VideosPage}/>
+                                <Route exact path="/moods_and_genres" component={MoodsAndGenrePage}/>
+                                <Route component={PageNotFound}/>
+                            </Switch>
+                        </Suspense>
+                    </Suspense>
                 </Router>
-            </Suspense>
         </div>
     )
 }

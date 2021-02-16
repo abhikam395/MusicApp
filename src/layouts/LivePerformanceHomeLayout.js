@@ -4,12 +4,14 @@ import songImage from './../../assets/images/song-image.jpg';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 
+import NewMusicVideoComponent from './../components/common/NewMusicVideoComponent.jsx';
+
 export default class LivePerformanceHomeLayout extends Component {
 
     constructor(){
         super();
         this.state = {
-            songs : [
+            videos : [
                 {id: 1, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
                 {id: 2, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
                 {id: 3, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
@@ -39,7 +41,7 @@ export default class LivePerformanceHomeLayout extends Component {
     }
 
     onPreviousButtonClick(){
-        //songs list
+        //videos list
         let list = this.list.current;
         //width of imageHolderElement
         let imageHolderSize = this.imageHolder.current.clientWidth;
@@ -51,7 +53,7 @@ export default class LivePerformanceHomeLayout extends Component {
     }
 
     onNextButtonClick(){
-        //songs list
+        //videos list
         let list = this.list.current;
         //width of imageHolderElement
         let imageHolderSize = this.imageHolder.current.clientWidth;
@@ -62,79 +64,20 @@ export default class LivePerformanceHomeLayout extends Component {
         console.log(list)
     }
 
-    hidePreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "none"
-    }
+    renderSongList(videos){
+        return videos.map((video, index) => (
+            <NewMusicVideoComponent
+                key={index}
+                index={index}
+                video={video}
+                ref={this.imageHolder}>
 
-    showPreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "flex"
-    }
-
-    hideNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "none"
-    }
-
-    showNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "flex"
-    }
-
-
-    showMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('liveperformance__more-icon')[index];
-        let playSong = document.getElementsByClassName('liveperformance__play-icon')[index];
-      
-        moreIcon.style.display = 'block';
-        playSong.style.display = 'flex';
-    }
-    
-
-    hideMoreAndPlaySongIcon(index){
-        let moreIcon = document.getElementsByClassName('liveperformance__more-icon')[index];
-        let playSong = document.getElementsByClassName('liveperformance__play-icon')[index];
-
-        moreIcon.style.display = 'none';
-        playSong.style.display = 'none';
-    }
-
-    renderSongItem(song, index){
-        return (
-            <li
-                key={song.id}
-                className="liveperformance__item liveperformance__item--size liveperformance__item--theme">
-                <div className="liveperformance__imageholder liveperformance__imageholder--size"
-                    ref={this.imageHolder}
-                    onMouseEnter={this.showMoreAndPlaySongIcon.bind(this, index)}
-                    onMouseLeave={this.hideMoreAndPlaySongIcon.bind(this, index)}>
-                    <div className="liveperformance__more-icon">
-                        <MoreVert/>
-                    </div>
-                    <img src={song.image} 
-                         className="liveperformance__image liveperformance__image--size"/>
-                    <div 
-                        className="liveperformance__play-icon liveperformance__play-icon--size">
-                        <PlayArrow/>
-                    </div>
-                </div>
-                <h4 className="liveperformance__song-name">
-                    {song.title}
-                </h4>
-                <p className="liveperformance__artist-name">
-                    {this.getArtistsName(song.artists)}
-                </p>
-            </li>
-        )
-    }
-
-    renderSongList(songs){
-        return songs.map((song, index) => this.renderSongItem(song, index));
+            </NewMusicVideoComponent>
+        ));
     }
 
     render(){
-        let { songs } = this.state;
+        let { videos } = this.state;
 
         return (
             <section className="liveperformance liveperformance--size">
@@ -152,7 +95,7 @@ export default class LivePerformanceHomeLayout extends Component {
                             
                             <ul className="liveperformance__list liveperformance__list--size"
                                 ref={this.list}>
-                                { this.renderSongList(songs) }
+                                { this.renderSongList(videos) }
                             </ul>
                             <div className="liveperformance__icon liveperformance__next-icon" 
                                 id="liveperformance-next"
