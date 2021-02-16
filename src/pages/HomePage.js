@@ -11,7 +11,7 @@ export default class HomePage extends Component {
         return (
             <main className="homepage homepage--size">
                 <Suspense fallback={<h4>Loading..</h4>}>
-                    <MixedSongsHomeLayout/>
+                    <MixedSongsHomeLayout {...this.props}/>
                     <YourFavouriteHomeLayout/>
                     <LivePerformanceHomeLayout/>
                 </Suspense>

@@ -1,0 +1,61 @@
+.playlist{
+
+    &__container{
+        display: flex;
+        align-items: center;
+        padding: 20px 10px;
+
+        &--size{
+            min-height: 380px;
+        }
+    }
+
+    &__image{
+
+        &--size{
+            height: 250px;
+            width: 250px;
+        }
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 20px;
+    }
+
+    &__name{
+        font-size: 38px;
+    }
+
+    &__description{
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    &__button-group{
+        display: flex;
+        margin-top: 30px;
+    }
+
+    &__button-shuffle{
+        background-color: white;
+        padding: 10px 30px;
+        border: none;
+        font-weight: 600;
+        color: black;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    &__button-addlibrary{
+        padding: 10px 30px;
+        border: 1px solid white;
+        font-weight: 600;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+}

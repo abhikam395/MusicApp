@@ -4,28 +4,28 @@ import songImage from './../../assets/images/song-image.jpg';
 
 import { NavigateNext, NavigateBefore, PlayArrow, MoreVert } from '@material-ui/icons';
 
+const songs = [
+    {id: 1, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 2, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 3, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 4, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 5, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 6, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 7, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 8, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 9, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 10, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 11, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 12, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 13, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+    {id: 14, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
+];
+
 export default class MixedSongsHomeLayout extends Component {
 
-    constructor(){
-        super();
-        this.state = {
-            songs : [
-                {id: 1, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 2, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 3, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 4, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 5, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 6, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 7, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 8, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 9, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 10, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 11, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 12, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 13, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-                {id: 14, title: 'Be Like That', artists: ['Kane Brown'], image: songImage },
-            ]
-        },
+    constructor(props){
+        super(props);
+        this.state = { songs : songs },
         this.nextIcon = React.createRef();
         this.previousIcon = React.createRef();
         this.list = React.createRef();
@@ -36,6 +36,11 @@ export default class MixedSongsHomeLayout extends Component {
 
     getArtistsName(artists){
         return artists.join(", ");
+    }
+
+    onMusicClick(index){
+        let { history } = this.props;
+        history.push('/playlist?list=' + index)
     }
 
     onPreviousButtonClick(){
@@ -62,27 +67,6 @@ export default class MixedSongsHomeLayout extends Component {
         console.log(list)
     }
 
-    hidePreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "none"
-    }
-
-    showPreviousButton(){
-        let icon = this.previousIcon.current;
-        icon.style.display = "flex"
-    }
-
-    hideNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "none"
-    }
-
-    showNextButton(){
-        let icon = this.nextIcon.current;
-        icon.style.display = "flex"
-    }
-
-
     showMoreAndPlaySongIcon(index){
         let moreIcon = document.getElementsByClassName('mixedsong__more-icon')[index];
         let playSong = document.getElementsByClassName('mixedsong__play-icon')[index];
@@ -90,7 +74,6 @@ export default class MixedSongsHomeLayout extends Component {
         moreIcon.style.display = 'block';
         playSong.style.display = 'flex';
     }
-    
 
     hideMoreAndPlaySongIcon(index){
         let moreIcon = document.getElementsByClassName('mixedsong__more-icon')[index];
@@ -103,6 +86,7 @@ export default class MixedSongsHomeLayout extends Component {
     renderSongItem(song, index){
         return (
             <li
+                onClick={this.onMusicClick.bind(this, index)}
                 key={song.id}
                 className="mixedsong__item mixedsong__item--size mixedsong__item--theme">
                 <div className="mixedsong__imageholder mixedsong__imageholder--size"

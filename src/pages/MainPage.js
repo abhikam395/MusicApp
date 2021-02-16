@@ -16,10 +16,11 @@ const ExplorePage = React.lazy(() => import('./../pages/ExplorePage'));
 const LibraryPage = React.lazy(() => import('./../pages/LibraryPage'));
 const AlbumsPage = React.lazy(() => import('./../pages/newreleases/AlbumsPage'));
 const VideosPage = React.lazy(() => import('./../pages/newreleases/VideosPage'));
-const PageNotFound = React.lazy(() => import('./../pages/PageNotFound'));
+const PageNotFoundPage = React.lazy(() => import('./../pages/PageNotFound'));
 const MoodsAndGenrePage = React.lazy(() => import('./../pages/MoodsAndGenrePage'));
 const NewReleasePage = React.lazy(() => import('./../pages/newreleases/NewReleasePage'));
 const ChartsPage = React.lazy(() => import('./../pages/ChartsPage'));
+const PlaylistPage = React.lazy(() => import('./../pages/PlaylistPage'));
 
 export default function mainPage(props) {
     return(
@@ -37,7 +38,8 @@ export default function mainPage(props) {
                                 <Route path="/new_releases/albums" component={AlbumsPage}/>
                                 <Route path="/new_releases/videos" component={VideosPage}/>
                                 <Route path="/moods_and_genres" component={MoodsAndGenrePage}/>
-                                <Route component={PageNotFound}/>
+                                <Route exact path="/playlist" component={PlaylistPage}/>
+                                <Route component={PageNotFoundPage}/>
                             </Switch>
                         </Suspense>
                     </Suspense>
