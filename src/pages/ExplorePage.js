@@ -12,7 +12,7 @@ export default class ExplorePage extends Component {
     render(){
         return(
             <Fragment>
-                <CategoriesLayout/>
+                <CategoriesLayout {...this.props}/>
                 <NewAlbumsLayout/>
                 <MoodsGenresLayout/>
                 <TrendingLayout/>

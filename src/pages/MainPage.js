@@ -18,8 +18,10 @@ const AlbumsPage = React.lazy(() => import('./../pages/newreleases/AlbumsPage'))
 const VideosPage = React.lazy(() => import('./../pages/newreleases/VideosPage'));
 const PageNotFound = React.lazy(() => import('./../pages/PageNotFound'));
 const MoodsAndGenrePage = React.lazy(() => import('./../pages/MoodsAndGenrePage'));
+const NewReleasePage = React.lazy(() => import('./../pages/newreleases/NewReleasePage'));
+const ChartsPage = React.lazy(() => import('./../pages/ChartsPage'));
 
-export default function MainPage() {
+export default function mainPage(props) {
     return(
         <div className="main main--size main--theme" id="main">
                 <Router>
@@ -30,9 +32,11 @@ export default function MainPage() {
                                 <Route exact path="/" component={HomePage}/>
                                 <Route path="/library" component={LibraryPage}/>
                                 <Route path="/explore" component={ExplorePage}/>
-                                <Route exact path="/new_releases/albums" component={AlbumsPage}/>
-                                <Route exact path="/new_releases/videos" component={VideosPage}/>
-                                <Route exact path="/moods_and_genres" component={MoodsAndGenrePage}/>
+                                <Route path="/charts" component={ChartsPage}/>
+                                <Route exact path="/new_releases" component={NewReleasePage}/>
+                                <Route path="/new_releases/albums" component={AlbumsPage}/>
+                                <Route path="/new_releases/videos" component={VideosPage}/>
+                                <Route path="/moods_and_genres" component={MoodsAndGenrePage}/>
                                 <Route component={PageNotFound}/>
                             </Switch>
                         </Suspense>

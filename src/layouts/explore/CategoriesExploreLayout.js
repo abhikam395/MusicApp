@@ -5,13 +5,13 @@ import { TrendingUp, Mood, NewReleases } from '@material-ui/icons';
 
 export default class CategoriesExploreLayout extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             categories: [
-                {id: 1, name: 'New releases', icon: NewReleases},
-                {id: 2, name: 'Charts', icon: TrendingUp},
-                {id: 3, name: 'Moods & genres', icon: Mood}
+                {id: 1, name: 'New releases', link: '/new_releases',  icon: NewReleases},
+                {id: 2, name: 'Charts', link: '/charts', icon: TrendingUp},
+                {id: 3, name: 'Moods & genres', link:'/moods_and_genres', icon: Mood}
             ]
         }
         this.alreadySelectedCategory = null;
@@ -31,7 +31,7 @@ export default class CategoriesExploreLayout extends Component {
      * called when user select category
      * @param {*} event 
      */
-    onCategorySelect(event){
+    onCategorySelect(link, event){
         let categoryElement = event.currentTarget;
         let { alreadySelectedCategory } = this.state;
         
@@ -39,6 +39,8 @@ export default class CategoriesExploreLayout extends Component {
         categoryElement.style.backgroundColor = '#212121';
 
         this.setState({ alreadySelectedCategory: categoryElement })
+
+        this.props.history.push(link)
     }
 
     
@@ -52,7 +54,7 @@ export default class CategoriesExploreLayout extends Component {
         return (
             <li className="categories__item categories__item--size categories__item--theme"
                 key={category.id}
-                onClick={this.onCategorySelect}>
+                onClick={this.onCategorySelect.bind(this, category.link)}>
                 <Icon className="categories__item-icon"/>
                 <h2 className="categories__item-name">{category.name}</h2>
             </li>

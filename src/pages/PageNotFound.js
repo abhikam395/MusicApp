@@ -5,9 +5,11 @@ export default class PageNotFound extends Component {
 
     render(){
         return (
-            <div>
-                Page not found
-            </div>
+            <main className="center">
+                <div className="pagenotfound pagenotfound--size">
+                    <h1>Page not found</h1>
+                </div>
+            </main>
         )
     }
 }
