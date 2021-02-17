@@ -37,7 +37,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getAlbums\": () => (/* binding */ getAlbums)\n/* harmony export */ });\nvar object = {\n  id: 1,\n  name: 'Justin bieber',\n  artist: 'Boyfriend',\n  image: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_648521078_2000136020009280129_393608.jpg'\n};\n/**\n * fill array with 100 dummy object\n */\n\nvar albums = new Array(100).fill(object);\nfunction getAlbums() {\n  return albums;\n}\n\n//# sourceURL=webpack://musicapp/./src/apis/albumsApi.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getAlbums\": () => (/* binding */ getAlbums)\n/* harmony export */ });\nvar object = {\n  id: 1,\n  name: 'Justin bieber',\n  artist: 'Boyfriend',\n  image: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_648521078_2000136020009280129_393608.jpg'\n};\nfunction getAlbums() {\n  return new Array(100).fill(object);\n}\n\n//# sourceURL=webpack://musicapp/./src/apis/albumsApi.js?");
 
 /***/ }),
 
